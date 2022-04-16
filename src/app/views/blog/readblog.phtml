@@ -1,0 +1,27 @@
+<?php
+if ($blogs->count()>0){
+    ?>
+     <form method="POST" action="../blog/readblog"> 
+      <div class="container-fluid mt-1 mb-3">
+        <div class="row justify-content-center">
+         <?php foreach($blogs as $blog){ ?>
+       <div class=" mt-4">
+          <div class="card w-100"  >
+          <img src="../public/img/<?php echo(rand(1,7));?>.jpeg" class="card-img-top" alt="..." style="width: 30em;" >
+         <div class="card-body">
+        <h5 class="card-title"><?php echo $blog->title;?></h5>
+        <p class="card-text"><?php echo $blog->details;?></p>
+        </div>
+        <div class="card-body">
+       </div>
+       </div>
+            </div>
+<?php }?>
+        </div>
+    </div>
+     </form>
+      </div>
+
+    <?php
+}
+?>
