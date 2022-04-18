@@ -7,8 +7,18 @@ class DashboardController extends Controller
 
     public function indexAction()
     {
-        $this->view->users = Users::find();
-        $this->view->blogs = Blogs::find();
+        $this->view->users = Users::find(
+            [
+                'order' => 'id DESC',
+
+                 ]
+        );
+        $this->view->blogs = Blogs::find(
+            [
+                'order' => 'blogid DESC',
+                'limit'=> 3,
+                 ]
+        );
     }
     public function changeAction(){
         $changeid =  $_POST['btnchange'];
@@ -77,6 +87,7 @@ class DashboardController extends Controller
         $this->response->redirect("../dashboard");
        }
    }
+  
     
 }
 

@@ -14,23 +14,20 @@ class Locale extends Injectable
      */
     public function getTranslator(): NativeArray
     {
-        
-
         if(true === $this->cache->has('my-key')){
          $language = $this->cache->get('my-key');
         }
 else{
     $language = "en";
-}
-        
-        if (true === $this->request->isPost()) {
+} 
+        if (isset($_POST['locale'])) {
+          
             $locale = $this->request->getPost('locale');
-            
             $this->cache->set('my-key', $locale);
             $language = $this->cache->get('my-key');
             
         }
-        
+      
         
         $messages = [];
        

@@ -6,7 +6,7 @@
 	<div class="row">
 	    <div class="col-md-8 col-md-offset-2">
     		<h1>Create post</h1>
-    		<form action="../blog/postblog"  method="POST"> 
+    		<form action="../blog/postblog?bearer=<?php echo $_GET['bearer'];?>"  method="POST"> 
     		    <div class="mb-3">
            <label for="formFile" class="form-label">Title</label>
            <input class="form-control" type="text" id="formFile" name="title">

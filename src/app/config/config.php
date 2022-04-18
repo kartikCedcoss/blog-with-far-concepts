@@ -1,14 +1,15 @@
 <?php
 $t=time();
+
 return  [
     'app' => [
         'baseUri'  => getenv('APP_BASE_URI'),
         'env'      => getenv('APP_ENV'),
         'name'     => 'APP_NAME',
-        'timezone' => date("hr-m",$t),
+        'timezone' => date("d-m-y"),
         'url'      => getenv('APP_URL'),
         'version'  => getenv('VERSION'),
-        'time'     => microtime(true),
+        'time'     => date("d-m-y h:i a"),
     ],
     'database' =>[
         'adapter'     => 'Mysql',
