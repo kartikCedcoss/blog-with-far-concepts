@@ -38,7 +38,7 @@ class BlogController extends Controller
        
         $blogid = $this->request->getPost('readblog');
 
-        if(!$blogid){
+        if(!$this->request->isPost()){
          $blogid=$this->session->get('bid');
         }
         $this->session->set('bid',$blogid);
@@ -65,5 +65,28 @@ class BlogController extends Controller
             $this->response->redirect("blog/readblog?bearer=$bearer");
         }
 
+    }
+    public function likeAction(){
+        $bearer=$this->request->get('bearer');
+        $blogid = $this->request->getPost('btnlike');
+        $username = $this->session->get('username');
+        $data  = new Likes ();
+   
+        $like = Likes::findFirst(['conditions' => "blogid = '$blogid' AND username = '$username'"]);
+        if($like){
+            $like->delete();
+            $this->response->redirect("index?bearer=$bearer");
+        }
+   else{
+        $data->assign([
+            'blogid' =>$blogid,
+            'username'=>$username,
+            'likes'=>1,
+         ]);
+        $success=  $data->save();
+        if($success){
+          $this->response->redirect("index?bearer=$bearer");
+      }
+    }
     }
 }
