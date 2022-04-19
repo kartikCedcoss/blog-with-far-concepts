@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
 <?php 
-if ($users->count()>0){
+if ($flag == 1){
     foreach($users as $user){
 ?>
 
@@ -18,6 +18,9 @@ if ($users->count()>0){
 
 <?php
     }
+}
+else{
+    echo "User Not Found";
 }
 ?>
 </div>

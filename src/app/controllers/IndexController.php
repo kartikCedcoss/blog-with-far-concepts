@@ -16,6 +16,11 @@ class IndexController extends Controller
             [
              'order' => 'blogid DESC'
               ]);
+             
+              $username = $this->session->get('username');
+             
+          
     }
+    
    
 }

@@ -2,9 +2,6 @@
 
 use Phalcon\Mvc\Controller;
 
-
-
-
 class UserController extends Controller
 {
 
@@ -21,7 +18,7 @@ class UserController extends Controller
     {
         $editid = $_POST['btnedit'];
         $this->view->blogs = Blogs::find("blogid = $editid");
-        //return $editid; 
+        
     }
     public function updateblogAction()
     {
@@ -43,12 +40,17 @@ class UserController extends Controller
         $userName =  Users::find("name= '$input'");
         if ($userEmail->count()>0) {
             $this->view->users = $userEmail;
+            $this->view->flag = 1;
             return;
         }
-        if($userName->count()>0) {
+       elseif($userName->count()>0) {
             $this->view->users = $userName;
+            $this->view->flag = 1;
             return;
+        }else{
+            $this->view->flag = 0;
         }
+
     }
     public function viewBlogAction(){
         $userid = $this->request->getPost('view'); 
